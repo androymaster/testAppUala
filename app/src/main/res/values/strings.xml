@@ -2,4 +2,8 @@
     <string name="app_name">My Application</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="action_search">Ingresa un nombre de algun platillo</string>
+    <string name="action_empty_list">Lo sentimos, aun no se ha buscado ningún platillo para mostrar</string>
+    <string name="txt_container_subtitle">Preparation instructions</string>
+    <string name="txt_subtitle_list">Ingredient List</string>
 </resources>
