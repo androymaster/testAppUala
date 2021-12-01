@@ -9,7 +9,11 @@
         android:id="@+id/foodPlateDetailFragment"
         android:name="com.test.myapplication.ui.foodPlatesDetail.FoodPlateDetailFragment"
         android:label="fragment_food_plate_detail"
-        tools:layout="@layout/fragment_food_plate_detail" />
+        tools:layout="@layout/fragment_food_plate_detail" >
+        <argument
+            android:name="idFood"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/foodListFragment"
         android:name="com.test.myapplication.ui.foodPlatesList.FoodListFragment"

@@ -1,6 +1,7 @@
 package com.test.myapplication.ui.foodPlatesList
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.appcompat.widget.SearchView
@@ -82,9 +83,10 @@ class FoodListFragment : Fragment(R.layout.fragment_food_list), FoodAdapter.Cell
     }
 
     override fun onCellClickListener(meal: MealList) {
-        /*val bundle = Bundle()
-        bundle.putParcelable("meal",meal)*/
-        findNavController().navigate(R.id.foodPlateDetailFragment)
+        val action = FoodListFragmentDirections.actionFoodListFragmentToFoodPlateDetailFragment(
+            meal.mealList[0].idMeal.toInt()
+        )
+        findNavController().navigate(action)
     }
 
     private fun searchView() {

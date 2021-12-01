@@ -9,13 +9,19 @@ import java.lang.Exception
 class FoodPlatesViewModel(private val repo: FoodPlateRepository) : ViewModel() {
 
     private val foodData = MutableLiveData<String>()
+    private val idFoods = MutableLiveData<Int>()
 
     fun setFood(foodName:String){
         foodData.value = foodName
     }
 
+    fun setIdFood(idFood:Int){
+        idFoods.value = idFood
+    }
+
     init{
         setFood("Apple")
+        setIdFood(1000)
     }
 
     fun getResultsPlates() = foodData.distinctUntilChanged().switchMap { nameFood ->
@@ -29,12 +35,14 @@ class FoodPlatesViewModel(private val repo: FoodPlateRepository) : ViewModel() {
         }
     }
 
-    fun getDetailPlates() = liveData(viewModelScope.coroutineContext + Dispatchers.IO) {
-        emit(Resources.Loading())
-        try {
-            emit(Resources.Success(repo.getDetailForPlates(12)))
-        }catch (e: Exception){
-            emit(Resources.Failure(e))
+    fun getDetailPlates() = idFoods.distinctUntilChanged().switchMap { foodID ->
+        liveData(viewModelScope.coroutineContext + Dispatchers.IO) {
+            emit(Resources.Loading())
+            try {
+                emit(Resources.Success(repo.getDetailForPlates(foodID)))
+            } catch (e: Exception) {
+                emit(Resources.Failure(e))
+            }
         }
     }
 
