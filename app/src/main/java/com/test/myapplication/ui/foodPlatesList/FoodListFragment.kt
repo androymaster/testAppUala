@@ -55,7 +55,13 @@ class FoodListFragment : Fragment(R.layout.fragment_food_list), SearchView.OnQue
                 }
             }
         })
+    }
 
+    override fun onCellClickListener(data: food_plates) {
+        TODO("Not yet implemented")
+    }
+
+    private fun searchByName(query: String){
         viewModel.getResultsPlates().observe(viewLifecycleOwner,{ result ->
             when(result){
                 is Resources.Loading ->{
@@ -79,12 +85,11 @@ class FoodListFragment : Fragment(R.layout.fragment_food_list), SearchView.OnQue
         })
     }
 
-    override fun onCellClickListener(data: food_plates) {
-        TODO("Not yet implemented")
-    }
-
     override fun onQueryTextSubmit(query: String?): Boolean {
-        TODO("Not yet implemented")
+        if (!query.isNullOrEmpty()){
+            searchByName(query.toLowerCase())
+        }
+        return true
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
