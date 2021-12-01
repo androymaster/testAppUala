@@ -1,8 +1,8 @@
 package com.test.myapplication.repository
 
 import com.google.gson.GsonBuilder
-import com.test.myapplication.data.model.food_plates
 import com.test.myapplication.application.AppConstants
+import com.test.myapplication.data.model.MealList
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -12,16 +12,16 @@ interface WebService {
 
     @GET("api/json/v1/1/search.php")
     suspend fun getResultsFoodPlate(
-        @Query("s") s: String
-    ): food_plates
+        @Query("s") foodName: String
+    ): MealList
 
     @GET("api/json/v1/1/lookup.php")
     suspend fun getDetailForPlate(
-        @Query("i") i: Int
-    ): food_plates
+        @Query("i") id: Int
+    ): MealList
 
     @GET("api/json/v1/1/random.php")
-    suspend fun getRandomPlate(): food_plates
+    suspend fun getRandomPlate(): MealList
 
 }
 

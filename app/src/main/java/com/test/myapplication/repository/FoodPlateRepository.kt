@@ -1,10 +1,10 @@
 package com.test.myapplication.repository
 
-import com.test.myapplication.data.model.food_plates
+import com.test.myapplication.data.model.MealList
 
 interface FoodPlateRepository {
 
-    suspend fun getResultsFoodPlates(): food_plates
-    suspend fun getDetailForPlates(): food_plates
-    suspend fun getRandomPlates(): food_plates
+    suspend fun getResultsFoodPlates(foodName: String): MealList
+    suspend fun getDetailForPlates(idFood: Int): MealList
+    suspend fun getRandomPlates(): MealList
 }

@@ -1,5 +1,6 @@
 package com.test.myapplication.ui.foodPlatesList.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,43 +9,44 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.test.myapplication.R
-import com.test.myapplication.data.model.food_plates
+import com.test.myapplication.core.BaseViewHolder
+import com.test.myapplication.data.model.MealList
 
 class FoodAdapter(
-   private val dataSet: List<food_plates>,
+   private val context: Context,
+   private val dataSet: List<MealList>,
    private val cellClickListener: CellClickListener
-): RecyclerView.Adapter<FoodAdapter.FoodViewModel>() {
+): RecyclerView.Adapter<BaseViewHolder<*>>() {
 
     interface CellClickListener {
-        fun onCellClickListener(data: food_plates)
+        fun onCellClickListener(meal: MealList)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewModel {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.view_holder_food_item, parent, false)
-        return FoodViewModel(view)
-    }
-
-    override fun onBindViewHolder(holder: FoodViewModel, position: Int) {
-        val data = dataSet[position]
-        val name = data.meals[0].strMeal
-        val category = data.meals[0].strCategory
-        holder.images.load(data.meals[0].strMealThumb)
-        holder.nameFood.text = name
-        holder.categoryFood.text = category
-
-        holder.itemView.setOnClickListener {
-            cellClickListener.onCellClickListener(data)
-        }
-    }
-
-    class FoodViewModel(view: View): RecyclerView.ViewHolder(view){
-        val images: ImageView = view.findViewById(R.id.image_food)
-        val nameFood: TextView = view.findViewById(R.id.name_food)
-        val categoryFood: TextView = view.findViewById(R.id.category_food)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
+        return FoodViewHolder(LayoutInflater.from(context)
+            .inflate(R.layout.view_holder_food_item, parent, false))
     }
 
     override fun getItemCount(): Int {
         return dataSet.size
+    }
+
+    override fun onBindViewHolder(holder: BaseViewHolder<*>, position: Int) {
+        when(holder) {
+            is FoodViewHolder -> holder.bind(dataSet[position],position)
+        }
+    }
+
+    inner class FoodViewHolder(itemView: View): BaseViewHolder<MealList>(itemView){
+        override fun bind(item: MealList, position: Int) {
+            val images: ImageView = itemView.findViewById(R.id.image_food)
+            val nameFood: TextView = itemView.findViewById(R.id.name_food)
+            val categoryFood: TextView = itemView.findViewById(R.id.category_food)
+
+            images.load(item.mealList[0].strMealThumb)
+            nameFood.text = item.mealList[0].strMeal
+            categoryFood.text = item.mealList[0].strCategory
+            itemView.setOnClickListener { cellClickListener.onCellClickListener(item) }
+        }
     }
 }

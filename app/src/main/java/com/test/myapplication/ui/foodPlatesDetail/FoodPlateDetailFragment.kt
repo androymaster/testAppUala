@@ -38,15 +38,15 @@ class FoodPlateDetailFragment : Fragment(R.layout.fragment_food_plate_detail) {
                 }
                 is Resources.Success ->{
                     binding.progressBar.visibility = View.GONE
-                    if (result.data.meals.isEmpty()){
+                    if (result.data.mealList.isEmpty()){
                         return@observe
                     }else{
                         binding.progressBar.visibility = View.VISIBLE
                     }
-                    binding.imgBackground.load(result.data.meals[0].strMealThumb)
-                    binding.txtTitlePlate.text = result.data.meals[0].strMeal
-                    binding.description.text = result.data.meals[0].strInstructions
-                    binding.listIngredients.text = result.data.meals[0].strIngredient1
+                    binding.imgBackground.load(result.data.mealList[0].strMealThumb)
+                    binding.txtTitlePlate.text = result.data.mealList[0].strMeal
+                    binding.description.text = result.data.mealList[0].strInstructions
+                    binding.listIngredients.text = result.data.mealList[0].strIngredient1
                 }
                 is Resources.Failure ->{
                     binding.progressBar.visibility = View.GONE

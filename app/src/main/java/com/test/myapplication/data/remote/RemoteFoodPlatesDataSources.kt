@@ -1,19 +1,19 @@
 package com.test.myapplication.data.remote
 
-import com.test.myapplication.data.model.food_plates
+import com.test.myapplication.data.model.MealList
 import com.test.myapplication.repository.WebService
 
 class RemoteFoodPlatesDataSources(private val webService: WebService) {
 
-    suspend fun getResultsFoodPlates(): food_plates {
-       return webService.getResultsFoodPlate( s = "Chicken")
+    suspend fun getResultsFoodPlates(foodName: String): MealList {
+       return webService.getResultsFoodPlate(foodName)
     }
 
-    suspend fun getDetailForPlates(): food_plates {
-        return webService.getDetailForPlate( i = 12)
+    suspend fun getDetailForPlates(idFood: Int): MealList {
+        return webService.getDetailForPlate(idFood)
     }
 
-    suspend fun getRandomPlates(): food_plates {
+    suspend fun getRandomPlates(): MealList {
         return webService.getRandomPlate()
     }
 

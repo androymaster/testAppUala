@@ -1,13 +1,14 @@
 package com.test.myapplication.data.model
 
+import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Meal(
-    val dateModified: Any,
     val idMeal: String,
     val strArea: String,
     val strCategory: String,
-    val strCreativeCommonsConfirmed: Any,
-    val strDrinkAlternate: Any,
-    val strImageSource: Any,
     val strIngredient1: String,
     val strIngredient10: String,
     val strIngredient11: String,
@@ -52,6 +53,10 @@ data class Meal(
     val strMeasure8: String,
     val strMeasure9: String,
     val strSource: String,
-    val strTags: Any,
     val strYoutube: String
+): Parcelable
+
+data class MealList(
+    @SerializedName("meals")
+    val mealList: List<Meal>
 )
