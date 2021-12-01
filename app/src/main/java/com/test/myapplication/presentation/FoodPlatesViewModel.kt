@@ -39,7 +39,7 @@ class FoodPlatesViewModel(private val repo: FoodPlateRepository) : ViewModel() {
     }
 }
 
-class MovieViewModelFactory(private val repo: FoodPlateRepository): ViewModelProvider.Factory{
+class FoodViewModelFactory(private val repo: FoodPlateRepository): ViewModelProvider.Factory{
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return modelClass.getConstructor(FoodPlateRepository::class.java).newInstance(repo)
     }

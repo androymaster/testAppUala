@@ -12,12 +12,12 @@ interface WebService {
 
     @GET("api/json/v1/1/search.php")
     suspend fun getResultsFoodPlate(
-        @Query("s") word: String
+        @Query("s") s: String
     ): food_plates
 
     @GET("api/json/v1/1/lookup.php")
     suspend fun getDetailForPlate(
-        @Query("i") id: Int
+        @Query("i") i: Int
     ): food_plates
 
     @GET("api/json/v1/1/random.php")

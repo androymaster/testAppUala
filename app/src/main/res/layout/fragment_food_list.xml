@@ -7,14 +7,12 @@
     android:orientation="vertical"
     tools:context=".ui.foodPlatesList.FoodListFragment">
 
-    <androidx.appcompat.widget.AppCompatEditText
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/svFood"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:drawableStart="@drawable/ic_search"
-        android:drawableLeft="@drawable/ic_search"
         android:drawablePadding="12dp"
-        android:hint="@string/action_search"
         android:minHeight="48dp" />
 
     <RelativeLayout
@@ -30,11 +28,12 @@
 
     </RelativeLayout>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/banner_plate"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="90dp"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center"
         tools:ignore="SpeakableTextPresentCheck"/>
 
     <RelativeLayout
@@ -55,11 +54,11 @@
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_movie"
+        android:id="@+id/rv_food_plates"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
-        android:orientation="vertical"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/view_holder_food_item"/>
 
 </LinearLayout>
