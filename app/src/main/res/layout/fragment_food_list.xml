@@ -15,7 +15,6 @@
         android:drawableLeft="@drawable/ic_search"
         android:drawablePadding="12dp"
         android:hint="@string/action_search"
-        android:hintTextColor="#757575"
         android:minHeight="48dp" />
 
     <RelativeLayout
