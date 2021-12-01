@@ -50,7 +50,16 @@ class FoodPlateDetailFragment : Fragment(R.layout.fragment_food_plate_detail) {
                         binding.imgBackground.load(result.data.mealList[0].strMealThumb)
                         binding.txtTitlePlate.text = result.data.mealList[0].strMeal
                         binding.description.text = result.data.mealList[0].strInstructions
-                        binding.listIngredients.text = result.data.mealList[0].strIngredient1
+                        binding.IngredientOne.text = result.data.mealList[0].strIngredient1
+                        binding.IngredientTwo.text = result.data.mealList[0].strIngredient2
+                        binding.IngredientTree.text = result.data.mealList[0].strIngredient3
+                        binding.IngredientFour.text = result.data.mealList[0].strIngredient4
+                        binding.IngredientFive.text = result.data.mealList[0].strIngredient5
+                        binding.IngredientSix.text = result.data.mealList[0].strIngredient6
+                        binding.IngredientTree.text = result.data.mealList[0].strIngredient7
+                        binding.IngredientFour.text = result.data.mealList[0].strIngredient8
+                        binding.IngredientFive.text = result.data.mealList[0].strIngredient9
+                        binding.IngredientSix.text = result.data.mealList[0].strIngredient10
                     }
                 }
                 is Resources.Failure ->{
